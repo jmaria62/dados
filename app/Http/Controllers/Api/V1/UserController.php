@@ -53,9 +53,16 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    //public function update(Request $request, User $user)
+    public function update(User $user, $name)
     {
-        $user->update($request->all());
+        //dd($request);
+        //dd($user);
+        //return $user ;
+
+        //$user->update($request->all());
+        $user->update(['name' => $name]);
+        return $user;
     }
 
     /**
@@ -74,10 +81,9 @@ class UserController extends Controller
 
     public function rollDice(User $user){
 
-        //return $user;
-        $roll = new Roll;
-        $roll->user_id = $user->id;
-        $roll->value1 = rand(1,6);
+        
+        $roll = new R1 = rand(1,6);
+
         $roll->value2 = rand(1,6);
         $roll->save();
 
@@ -148,10 +154,12 @@ class UserController extends Controller
         $min = 100;
         $minUser = 0;
         foreach($resUsers as $resUser){
-            $aux = $resUser['win']/$resUser['rolls'];
-            if ($aux < $min) {
-                $min = $aux;
-                $minUser = $resUser;
+            if ($resUser['rolls'] > 0){
+                $aux = $resUser['win']/$resUser['rolls'];
+                if ($aux < $min) {
+                    $min = $aux;
+                    $minUser = $resUser;
+                }
             }
 
         }
@@ -167,10 +175,12 @@ class UserController extends Controller
         $max = 0;
         $maxUser = 0;
         foreach($resUsers as $resUser){
-            $aux = $resUser['win']/$resUser['rolls'];
-            if ($aux > $max) {
-                $max = $aux;
-                $maxUser = $resUser;
+            if ($resUser['rolls'] > 0){
+                $aux = $resUser['win']/$resUser['rolls'];
+                if ($aux > $max) {
+                    $max = $aux;
+                    $maxUser = $resUser;
+                }
             }
 
         }
@@ -192,5 +202,6 @@ class UserController extends Controller
     }
 
 }
+
 
 

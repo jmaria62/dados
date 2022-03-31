@@ -10,10 +10,12 @@ use App\Models\Roll;
 Route::apiResource('v1/rolls',RollController::class)
                   ->only(['index','store','show','destroy']);
 
+Route::post('v1/userUpdate/{user}/{name}',[UserController::class,'update']);
+
 Route::apiResource('v1/users',UserController::class)
                      ->only(['index','store','show','destroy']); 
 
-Route::post('v1/users/{user}',[UserController::class,'update']); 
+//Route::post('v1/users/{user}',[UserController::class,'update']); 
 
 Route::get('v1/users/{user}',[UserController::class,'rolldice']);
 
