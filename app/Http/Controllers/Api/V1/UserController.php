@@ -82,8 +82,9 @@ class UserController extends Controller
     public function rollDice(User $user){
 
         
-        $roll = new R1 = rand(1,6);
-
+        $roll = new Roll;
+        $roll->user_id = $user->id;
+        $roll->value1 = rand(1,6);
         $roll->value2 = rand(1,6);
         $roll->save();
 
@@ -202,6 +203,5 @@ class UserController extends Controller
     }
 
 }
-
 
 
