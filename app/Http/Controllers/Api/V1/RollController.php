@@ -81,5 +81,6 @@ class RollController extends Controller
         $roll->value2 = rand(1,6);
         $roll->save();
 
+       
     }
 }
