@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
          $yo->name='jose';
          $yo->email='jmaria@hotmail.com';
          $yo->administrator=true;
-         $yo->password='12345678';
+         $yo->password='$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi'; // password
 
     
 

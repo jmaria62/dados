@@ -56,13 +56,31 @@ class UserController extends Controller
     //public function update(Request $request, User $user)
     public function update(User $user, $name)
     {
-        //dd($request);
-        //dd($user);
-        //return $user ;
+        
+        /*
+         return response()->json([
+            'user auth id' => auth()->user()->id,
+            'user ' => $user->id
+        ],200);
+        */
+       
+        if ((auth()->user()->id == $user->id) || (auth()->user()->administrator == 1)){
+        
+            $user->update(['name' => $name]);
+            //return $user;
+            return response()->json([
+                'message' => 'name updated',
+                'data' => $user
+            ],200);
+        
+        }
+        else {
+            return response()->json([
+                'message' => 'user denied'
+            ],400);
+        };
 
-        //$user->update($request->all());
-        $user->update(['name' => $name]);
-        return $user;
+        
     }
 
     /**
@@ -73,21 +91,39 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
+        if ((auth()->user()->id == $user->id) || (auth()->user()->administrator == 1)){
         $user->delete();
         return response()->json([
             'message' => 'success'
         ],204);
+        } else {
+            return response()->json([
+                'message' => 'user denied'
+            ],400);
+
+        }
     }
 
-    public function rollDice(User $user){
+    public function rollDice(User $user, Request $request){
 
-        
-        $roll = new R1 = rand(1,6);
+        if ((auth()->user()->id == $user->id) || (auth()->user()->administrator == 1)){
+            $roll = new Roll;
+            $roll->user_id = $user->id;
+            $roll->value1 = rand(1,6);
+            $roll->value2 = rand(1,6);
+            $roll->save();
+            return response()->json([
+                'roll' => $roll,
+                'token' => $request->bearerToken(),
+                
+            ]);
+        } else {
+            return response()->json([
+                'message' => 'user denied'
+            ],400);
+        }
 
-        $roll->value2 = rand(1,6);
-        $roll->save();
-
-        return $roll;
+    
 
     }
 
@@ -201,7 +237,25 @@ class UserController extends Controller
         ],204);
     }
 
-}
+    public function userProfile(){
+        return response()->json([
+            'status' => 1,
+            'messsage' => 'User Profile', 
+            'data' => auth()->user(),
+            'id' => auth()->user()->id
+        ]);
+    }
 
+    public function logout(){
+        auth()->user()->tokens()->delete();
+        return response()->json([
+            'status' => 1,
+            'messsage' => 'logout', 
+            
+        ]);
+
+    }
+
+}
 
 
