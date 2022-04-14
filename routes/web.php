@@ -16,7 +16,10 @@ use App\Models\Roll;
 |
 */
 
-Route::get('/',[RollController::class,'index']);
+ //Route::get('/',[RollController::class,'index']);
+ Route::get('/',function(){
+     return view('home');
+ });
 
 
 
@@ -29,3 +32,9 @@ Route::get('rolls',function(Request $request){
     $roll->value2 = $request->value2;
 
 });
+
+// rutas para vue
+
+// Route::get('rolls',[RollController::class, 'index'])->name('rolls.index');
+// Route::post('rolls',[RollController::class, 'store'])->name('rolls.store');
+// Route::delete('rolls/{roll}',[RollController::class, 'delete'])->name('rolls.delete');

@@ -17,7 +17,7 @@ class RollResource extends JsonResource
     {
         //return parent::toArray($request);
         $valor = $this->value1 + $this->value2;
-        $ganador = ($valor > 7)? true: false;
+        $ganador = ($valor == 7)? true: false;
         return [
             'valor1' => $this->value1,
             'valor2' => $this->value2,

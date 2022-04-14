@@ -3,13 +3,15 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\Api\V1\RollController;
+//use App\Http\Controllers\Api\V1\RollController;
+  
+use App\Http\Controllers\RollController;
 use App\Http\Controllers\Api\V1\UserController;
 use App\Http\Controllers\AuthController;
 use App\Models\Roll;
 
-Route::apiResource('v1/rolls',RollController::class)
-                  ->only(['index','store','show','destroy']);
+// Route::apiResource('v1/rolls',RollController::class)
+//                   ->only(['index','store','show','destroy']);
 
 Route::post('v1/userUpdate/{user}/{name}',[UserController::class,'update'])->middleware('auth:sanctum');
 
@@ -34,9 +36,9 @@ Route::get('v1/destroyUserRolls/{user}',[UserController::class,'destroyUserRolls
 
 
 
-Route::get('rolls',function(){
-    return Roll::all();
-});
+// Route::get('rolls',function(){
+//     return Roll::all();
+// });
 
 
 Route::post('/register',[AuthController::class,'register']);
@@ -46,3 +48,9 @@ Route::post('/login',[AuthController::class,'login']);
 Route::get('/logout',[UserController::class,'logout'])->middleware('auth:sanctum');
 
 Route::get('/userprofile',[UserController::class,'userprofile'])->middleware('auth:sanctum');
+
+// rutas para vue
+
+Route::get('rolls/{roll}',[RollController::class, 'destroyRoll'])->name('rolls.delete');
+ Route::get('rolls',[RollController::class, 'index'])->name('rolls.index');
+ Route::post('rolls',[RollController::class, 'store'])->name('rolls.store');
