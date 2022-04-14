@@ -17,9 +17,14 @@ class RollController extends Controller
      */
     public function index()
     {
-        //return RollResource::collection(Roll::latest()->paginate());
-        //return new RollCollection(Roll::latest()->paginate());
-        return Roll::all();
+     
+        //return Roll::all();
+        
+        $rolls = Roll::all();
+        //console.log("juasn");
+        
+        
+        return response()->json(compact('rolls'));
     }
 
     /**
@@ -32,9 +37,14 @@ class RollController extends Controller
     {
         $roll = Roll::create($request->all());
 
-        return $roll;
+        return response()->json(compact('roll'));
     }
 
+    public function delete($roll) {
+        $roll->delete();
+        return response()->json(compact('roll'));
+
+    }
     /**
      * Display the specified resource.
      *
@@ -82,5 +92,18 @@ class RollController extends Controller
         $roll->save();
 
        
+    }
+
+    public function destroyRoll(Roll $roll)
+    {
+        //$rolls = User::find($user->id)->rolls;
+        //foreach($rolls as $roll){
+           $roll->delete();
+
+        }
+        
+        //return response()->json([
+       //     'message' => 'success'
+        //],204);
     }
 }
