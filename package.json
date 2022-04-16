@@ -18,5 +18,10 @@
     },
     "dependencies": {
         "vue": "^3.2.31"
-    }
+    },
+    
+    "engines": {
+          "node": "14.x"
+        }
+      }
 }
