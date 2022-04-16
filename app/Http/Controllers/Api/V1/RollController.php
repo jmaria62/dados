@@ -94,13 +94,12 @@ class RollController extends Controller
        
     }
 
-    public function destroyRoll(Roll $roll)
-    {
+    public function destroyRoll(Roll $roll) {
         //$rolls = User::find($user->id)->rolls;
         //foreach($rolls as $roll){
            $roll->delete();
 
-        }
+        
         
         //return response()->json([
        //     'message' => 'success'

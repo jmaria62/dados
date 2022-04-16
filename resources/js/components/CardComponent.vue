@@ -5,13 +5,13 @@
     
             <div class="card-body">
                 <p class="card-text">Tirada de dados.</p>
-                <p class="card-text">{{roll.user_id}}</p>
-                 <p class="card-text">{{roll.value1}}</p>
-                   <p class="card-text">{{roll.value2}}</p>
+                <p class="card-text">User id:{{roll.user_id}}</p>
+                <p class="card-text">Dado 1 :{{roll.value1}}</p>
+                <p class="card-text">Dado 2 :{{roll.value2}}</p>
                
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
-                      <button type="button" v-on:click="deleteRoll" class="btn btn-sm btn-outline-secondary">Delete</button>
+                      <button type="button" v-on:click="deleteRoll" class="btn btn-danger btn-sm ">Delete</button>
                       
                     </div>
                     <small class="text-muted"> {{roll.id}} </small>
