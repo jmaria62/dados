@@ -19454,7 +19454,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $options.deleteRoll && $options.deleteRoll.apply($options, arguments);
     }),
     "class": "btn btn-danger btn-sm"
-  }, "Delete")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("small", _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.roll.id) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.roll.user.name), 1
+  }, "Delete")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("small", _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.roll.id), 1
   /* TEXT */
   )])])])]);
 }
