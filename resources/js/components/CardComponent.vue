@@ -14,7 +14,7 @@
                       <button type="button" v-on:click="deleteRoll" class="btn btn-danger btn-sm ">Delete</button>
                       
                     </div>
-                    <small class="text-muted"> {{roll.id}} </small>
+                    <small class="text-muted"> {{roll.id}}  {{roll.user.name}} </small>
                    
                 </div>
             </div>
