@@ -140,10 +140,16 @@ class UserController extends Controller
             if ($amount == 7) $win++;
 
         }
+        if ($count > 0) {
+            $average = round($win/$count,2);
+        } else {
+            $average=0;        
+        }
         return response()->json([
             'user' => $user->id,
             'win' => $win,
-            'rolls' => $count
+            'rolls' => $count,
+            'average' => $average
         ]);
     }
 
@@ -165,12 +171,18 @@ class UserController extends Controller
                     if ($amount == 7) $win++;
     
                 }
+                if ($count > 0) {
+                    $average = round($win/$count,2);
+                } else {
+                    $average=0;        
+                }
 
                
                 $res[]=[
                     'user'=> $user->id,
                     'win' => $win,
-                    'rolls' => $count ];
+                    'rolls' => $count,
+                    'average' => $average ];
 
                 
                 
