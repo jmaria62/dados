@@ -19328,8 +19328,9 @@ var defaultRoll = {
         //console.log(response)
         //this.$emit('add',this.roll);
         _this.$emit('add', response.data.roll);
-      });
-      this.roll = Object.assign({}, defaultRoll);
+
+        _this.roll = Object.assign({}, defaultRoll);
+      }); //300 ms
     }
   }
 });
@@ -19419,7 +19420,7 @@ var _hoisted_3 = {
 
 var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "card-text"
-}, "Tirada de dados.", -1
+}, "Tirada de dados 3", -1
 /* HOISTED */
 );
 

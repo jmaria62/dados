@@ -137,7 +137,7 @@ class UserController extends Controller
             $count ++;
             $amount = $roll->value1 + $roll->value2;
 
-            if ($amount = 7) $win++;
+            if ($amount == 7) $win++;
 
         }
         return response()->json([

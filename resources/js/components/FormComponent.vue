@@ -43,9 +43,10 @@ export default {
                 //console.log(response)
                 //this.$emit('add',this.roll);
                 this.$emit('add',response.data.roll);
-            });
+                this.roll = Object.assign({},defaultRoll)
+            }); //300 ms
             
-            this.roll = Object.assign({},defaultRoll)
+           
 
         }
     }
