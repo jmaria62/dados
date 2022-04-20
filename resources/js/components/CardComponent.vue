@@ -4,8 +4,9 @@
             <!-- <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
     
             <div class="card-body">
-                <p class="card-text">Tirada de dados 3</p>
+                <p class="card-text">Tirada de dados</p>
                 <p class="card-text">User id:{{roll.user_id}}</p>
+                <!-- <p class="card-text">User id:{{User::where(roll.user_id)->name()}}</p> -->
                 <p class="card-text">Dado 1 :{{roll.value1}}</p>
                 <p class="card-text">Dado 2 :{{roll.value2}}</p>
                

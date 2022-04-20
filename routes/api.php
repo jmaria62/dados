@@ -10,10 +10,10 @@ use App\Http\Controllers\Api\V1\UserController;
 use App\Http\Controllers\AuthController;
 use App\Models\Roll;
 
-// Route::apiResource('v1/rolls',RollController::class)
-//                   ->only(['index','store','show','destroy']);
 
-Route::post('v1/userUpdate/{user}/{name}',[UserController::class,'update'])->middleware('auth:sanctum');
+
+//Route::post('v1/userUpdate/{user}/{name}',[UserController::class,'update'])->middleware('auth:sanctum');
+Route::put('v1/userUpdate/{user}/{name}',[UserController::class,'update'])->middleware('auth:sanctum');
 
 Route::apiResource('v1/users',UserController::class)
                      ->only(['index','store','show','destroy']); 
@@ -31,6 +31,8 @@ Route::get('v1/usersAverage',[UserController::class,'usersAverage']);
 Route::get('v1/userLooser',[UserController::class,'userLooser']);
 
 Route::get('v1/userWinner',[UserController::class,'userWinner']);
+
+Route::get('v1/usersRanking',[UserController::class,'usersRanking']);
 
 Route::get('v1/destroyUserRolls/{user}',[UserController::class,'destroyUserRolls'])->middleware('auth:sanctum');
 

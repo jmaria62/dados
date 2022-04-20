@@ -127,6 +127,33 @@ class UserController extends Controller
 
     }
 
+    public function usersRanking(){
+        $rolls = Roll::all();
+
+        $win = 0;
+        $count = 0;
+
+        foreach($rolls as $roll){
+            $count ++;
+            $amount = $roll->value1 + $roll->value2;
+
+            if ($amount == 7) $win++;
+
+        }
+        if ($count > 0) {
+            $average = round($win/$count,2);
+        } else {
+            $average=0;        
+        }
+        return response()->json([
+        
+            'win' => $win,
+            'rolls' => $count,
+            'average' => $average
+        ]);
+    }
+    
+
     public function userAverage(User $user){
         $rolls = User::find($user->id)->rolls;
         //$rolls = $user->rolls();
@@ -212,7 +239,15 @@ class UserController extends Controller
 
         }
 
-        return $minUser;
+        //return $minUser;
+
+        return response()->json([
+            'user_id' => $minUser['user'],            
+            'win' => $minUser['win'],
+            'rolls' => $minUser['rolls'],
+            'average' => $minUser['average']
+            
+        ]);
 
 
     }
@@ -233,7 +268,16 @@ class UserController extends Controller
 
         }
 
-        return $maxUser;
+        //return $maxUser;
+
+        return response()->json([
+            'user_id' => $maxUser['user'],            
+            'win' => $maxUser['win'],
+            'rolls' => $maxUser['rolls'],
+            'average' => $maxUser['average']
+            
+        ]);
+
     }
 
     public function destroyUserRolls(User $user)
